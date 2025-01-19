@@ -36,3 +36,17 @@ export async function edit(formData: FormData) {
 
   revalidatePath("/");
 }
+
+export async function deleteTodo(formData: FormData) {
+  const inputId = formData.get("inputId") as string;
+
+  const id = parseInt(inputId);
+
+  await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+
+  revalidatePath("/");
+}

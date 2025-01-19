@@ -1,4 +1,5 @@
 import AddTodo from "@/components/AddTodo";
+import DeleteTodo from "@/components/DeleteTodo";
 import EditTodo from "@/components/EditTodo";
 import Todo from "@/components/Todo";
 import { PrismaClient } from "@prisma/client";
@@ -28,6 +29,7 @@ const Home = async () => {
         <div key={id}>
           <Todo todo={todo} />
           <EditTodo todo={todo} />
+          <DeleteTodo todo={todo} />
         </div>
       ))}
     </div>
