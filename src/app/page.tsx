@@ -1,4 +1,5 @@
 import AddTodo from "@/components/AddTodo";
+import EditTodo from "@/components/EditTodo";
 import Todo from "@/components/Todo";
 import { PrismaClient } from "@prisma/client";
 
@@ -26,6 +27,7 @@ const Home = async () => {
       {data.map((todo, id) => (
         <div key={id}>
           <Todo todo={todo} />
+          <EditTodo todo={todo} />
         </div>
       ))}
     </div>

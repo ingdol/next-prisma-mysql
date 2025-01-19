@@ -18,3 +18,21 @@ export async function create(formData: FormData) {
 
   revalidatePath("/");
 }
+
+export async function edit(formData: FormData) {
+  const input = formData.get("newTitle") as string;
+  const inputId = formData.get("inputId") as string;
+
+  const id = parseInt(inputId);
+
+  await prisma.todo.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: input,
+    },
+  });
+
+  revalidatePath("/");
+}
