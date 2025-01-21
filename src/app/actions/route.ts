@@ -50,3 +50,31 @@ export async function deleteTodo(formData: FormData) {
 
   revalidatePath("/");
 }
+
+export async function todoStatus(formData: FormData) {
+  const inputId = formData.get("inputId") as string;
+  const id = parseInt(inputId);
+  const todo = await prisma.todo.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  if (!todo) {
+    return;
+  }
+
+  const updatedStatus = !todo.isCompleted;
+
+  await prisma.todo.update({
+    where: {
+      id: id,
+    },
+    data: {
+      isCompleted: updatedStatus,
+    },
+  });
+
+  revalidatePath("/");
+  return updatedStatus;
+}

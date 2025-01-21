@@ -1,4 +1,5 @@
 import AddTodo from "@/components/AddTodo";
+import ChangeTodo from "@/components/ChangeTodo";
 import DeleteTodo from "@/components/DeleteTodo";
 import EditTodo from "@/components/EditTodo";
 import Todo from "@/components/Todo";
@@ -28,6 +29,7 @@ const Home = async () => {
       {data.map((todo, id) => (
         <div key={id}>
           <Todo todo={todo} />
+          <ChangeTodo todo={todo} />
           <EditTodo todo={todo} />
           <DeleteTodo todo={todo} />
         </div>
